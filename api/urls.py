@@ -4,5 +4,7 @@ from api import views
 
 urlpatterns = [
   path('patients/', views.PatientListView.as_view({'get': 'list'}), name = 'get_patients'),
-  path('patients/<int:pk>', views.PatientListView.as_view({'get': 'retrieve'}), name = 'get_patient')
+  path('patients/<int:pk>', views.PatientListView.as_view({'get': 'retrieve'}), name = 'get_patient'),
+
+  path('ml/text', views.MLText, name = 'ml_text')
 ]
