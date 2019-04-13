@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 
 from rest_framework_json_api.views import (
@@ -22,11 +23,11 @@ def MLText(request):
   if request.method == "POST":
     endpoint = "http://localhost:1212/api/text"
     data = {
-      'text' : request.form.text
+      'text' : request.POST['text']
     }
     result = requests.post(endpoint, data = data)
 
-    return result
+    return HttpResponse(result.content)
 
   else:
     return json.dumps({
